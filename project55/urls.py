@@ -14,12 +14,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
 
-from fakeapp.views import fake_chat_view
+from fakeapp.views import fake_chat_view, RandomImage, ImageView
+from project55.settings import swagger
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('fake_chat/', fake_chat_view),
+    path('media/', RandomImage.as_view()),
+    path('image/', ImageView.as_view()),
 ]
+
+urlpatterns += swagger.urlpatterns
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,25 +1,20 @@
 from rest_framework import serializers
 
 from fakeapp.constanst import TEXT, ANSWER
-from fakeapp.models import FakeChat, Text, Answer
-
-
-class TextSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Text
-        fields = ['text']
-
-
-class AnswerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Answer
-        fields = ['answer']
+from fakeapp.models import FakeChat, Image
 
 
 class FakeChatSerializer(serializers.ModelSerializer):
-    # text = TextSerializer()
+    text = serializers.CharField(required=True)
+
     # answer = AnswerSerializer()
 
     class Meta:
         model = FakeChat
         fields = 'id text answer'.split()
+
+
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Image
+        fields = ('id', 'image')
