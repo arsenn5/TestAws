@@ -6,9 +6,6 @@ services:
       context: .
     container_name: backend
     environment:
-      DJANGO_SUPERUSER_USERNAME: "admin3"
-      DJANGO_SUPERUSER_EMAIL: "admin3@gmail.com"
-      DJANGO_SUPERUSER_PASSWORD: "Def2638234"
       ENGINE: "${ENGINE}"
       NAME: "${NAME}"
       ALLOWED_HOSTS: "${ALLOWED_HOSTS}"
