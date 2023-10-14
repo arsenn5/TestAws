@@ -29,7 +29,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
+# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
 
 if os.environ['DEBUG']:
     print('True')
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'fakeapp',
     'django_filters',
     'decouple',
-    'drf_yasg'
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

@@ -2,9 +2,6 @@ import os
 import random
 
 from django.conf import settings
-from django.contrib.staticfiles import finders
-from django.http import FileResponse, JsonResponse
-from django.urls import reverse
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -13,8 +10,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from fakeapp.filters import FakeChatFilter
-from fakeapp.models import FakeChat, Image
-from fakeapp.serializers import FakeChatSerializer, ImageSerializer
+from fakeapp.models import FakeChat, FakePeople
+from fakeapp.serializers import FakeChatSerializer, FakeDogSerializer
 
 
 # Create your views here.
@@ -32,20 +29,9 @@ def fake_chat_view(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class RandomImage(APIView):
-    def post(self, request):
-        media_root = settings.MEDIA_ROOT
-        media_path = os.path.join(media_root)
-        images = os.listdir(media_path)
-        if images:
-            random_image = random.choice(images)
-            image_url = os.path.join(random_image)
-            full_image_url = request.build_absolute_uri(image_url)
-            return Response({'image_url': full_image_url})
-        else:
-            return Response({'error': 'No images found in the media folder.'}, status=404)
+@api_view(['GET'])
+def fake_dog(request):
+    queryset = FakePeople.objects.all()
+    serializer = FakeDogSerializer(queryset, many=True, context={'request': request}).data
+    return Response(data=serializer, status=status.HTTP_200_OK)
 
-
-class ImageView(ListAPIView):
-    queryset = Image.objects.all()
-    serializer_class = ImageSerializer

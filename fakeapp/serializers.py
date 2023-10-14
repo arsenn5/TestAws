@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from fakeapp.constanst import TEXT, ANSWER
-from fakeapp.models import FakeChat, Image
+from fakeapp.models import FakeChat, FakePeople
 
 
 class FakeChatSerializer(serializers.ModelSerializer):
@@ -14,7 +14,8 @@ class FakeChatSerializer(serializers.ModelSerializer):
         fields = 'id text answer'.split()
 
 
-class ImageSerializer(serializers.ModelSerializer):
+class FakeDogSerializer(serializers.ModelSerializer):
+
     class Meta:
-        model = Image
-        fields = ('id', 'image')
+        model = FakePeople
+        fields = '__all__'
