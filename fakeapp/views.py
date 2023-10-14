@@ -1,14 +1,13 @@
 import os
-import random
 
 from django.conf import settings
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.decorators import api_view
-from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.response import Response
-from rest_framework.views import APIView
+import random
 
+from fakeapp.constanst import nickname, comment
 from fakeapp.filters import FakeChatFilter
 from fakeapp.models import FakeChat, FakePeople
 from fakeapp.serializers import FakeChatSerializer, FakeDogSerializer
@@ -35,3 +34,22 @@ def fake_dog(request):
     serializer = FakeDogSerializer(queryset, many=True, context={'request': request}).data
     return Response(data=serializer, status=status.HTTP_200_OK)
 
+
+
+
+@api_view(['GET'])
+def life_chat(request):
+    life = random.choice(nickname)
+    comm = random.choice(comment)
+    media_root = settings.MEDIA_ROOT
+    media_path = os.path.join(media_root)
+    images = [f for f in os.listdir(media_path) if f.endswith(".jpg")]
+    if images:
+        random_image = random.choice(images)
+        image_url = os.path.join(random_image)
+        full_image_url = request.build_absolute_uri(image_url)
+        return Response({'username': life,
+                         'comment': comm,
+                         'image': full_image_url
+                         }, status=status.HTTP_200_OK)
+    return Response(status=status.HTTP_404_NOT_FOUND)

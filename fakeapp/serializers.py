@@ -7,15 +7,13 @@ from fakeapp.models import FakeChat, FakePeople
 class FakeChatSerializer(serializers.ModelSerializer):
     text = serializers.CharField(required=True)
 
-    # answer = AnswerSerializer()
-
     class Meta:
         model = FakeChat
         fields = 'id text answer'.split()
 
 
 class FakeDogSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = FakePeople
         fields = '__all__'
+

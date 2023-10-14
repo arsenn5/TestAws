@@ -33,3 +33,17 @@ ANSWER = (
     ('See you again', 'See you again'),
     ('Thank you for this chat, you too!', 'Thank you for this chat, you too!'),
 )
+
+comment = ['Its bold not just neat!', 'I want to learn this kind of fold! Teach me.',
+           'Let me take a nap... great shot, anyway.'
+           'Such killer.', 'This colours blew my mind.', 'Whoa.', 'This is elegant work!',
+           'Let me take a nap... great shot, anyway.'
+    , 'Such experience, many avatar, so revolutionary', 'Adore your shot, friend.',
+           'Delightful!! I adore the use of layout and type!',
+           'Designgasmed all over this!', 'Alluring work you have here.'
+           ]
+nickname = ['Robert Webb', 'James Gordon', 'Kenneth Cox', 'Vernon Larson'
+    , 'Grace Johnson', 'Helen Olson', 'Bryan Castillo', 'Frances Hart', 'Carolyn Allen', 'Patrick Cohen'
+    , 'Thomas Thomas', 'Dorothy Rhodes', 'Brenda Nelson', 'Joe Ray', 'Christine Jones', 'Juan Bennett', 'Carol Allen',
+            'Mary Jefferson'
+            ]

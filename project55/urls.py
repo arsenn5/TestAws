@@ -19,13 +19,14 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 
-from fakeapp.views import fake_chat_view, fake_dog
+from fakeapp.views import fake_chat_view, fake_dog, life_chat
 from project55.settings import swagger
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('fake_chat/', fake_chat_view),
-    path('character/', fake_dog)
+    path('character/', fake_dog),
+    path('media/', life_chat),
 ]
 
 urlpatterns += swagger.urlpatterns
