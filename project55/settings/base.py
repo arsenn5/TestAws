@@ -29,7 +29,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
+# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
 
 if os.environ['DEBUG']:
     print('True')
@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'django_filters',
     'decouple',
     'drf_yasg',
+    'django',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -130,3 +132,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "http://localhost:3080",
+    "http://localhost:3000",
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:4040",
+    "https://c5c0-109-201-175-115.ngrok-free.app",
+]
+
+CSRF_TRUSTED_ORIGINS = ["https://c5c0-109-201-175-115.ngrok-free.app"]
+
+ALLOWED_HOSTS = ["*"] + CORS_ALLOWED_ORIGINS

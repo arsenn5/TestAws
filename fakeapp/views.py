@@ -35,6 +35,11 @@ def fake_dog(request):
     return Response(data=serializer, status=status.HTTP_200_OK)
 
 
+@api_view(['GET'])
+def fake_dog_detail(request, id):
+    queryset = FakePeople.objects.get(id=id)
+    serializer = FakeDogSerializer(queryset, context={'request': request}).data
+    return Response(data=serializer, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])

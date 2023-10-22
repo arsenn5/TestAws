@@ -1,3 +1,7 @@
+##################
+##docker-compose##
+##################
+
 FROM python:3.9
 LABEL authors="arsen"
 ENV PYTHONWRITEBYTECODE 1
